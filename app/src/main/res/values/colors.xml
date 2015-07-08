@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- SPLASH -->
+    <color name="background_splash">#f8ac2b</color>
+    <color name="progress_bg_splash">#252524</color>
+    <color name="progress_pg_splash">#bf0310</color>
+
+    <!-- BEGIN -->
+    <color name="form_font_main">#8b8989</color>
+    <color name="red_main">#bf0310</color>
+    <color name="white_main">#fff</color>
+
+    <!-- LOGIN -->
+    <color name="border_forms_login">#6a6a6a</color>
+    <color name="font_forms_login">#bababa</color>
+    <color name="btns_login">#bf0310</color>
+    <color name="font_btns_login">#fff</color>
+    <color name="btn_disabled">#F2F2F2</color>
+
+    <!-- MAIN -->
+    <color name="black_item_prod">#2b2b2b</color>
+    <color name="gray_item_prod">#cbc9c9</color>
+    <color name="yellow_item_prod">#f8ac2d</color>
+    <color name="gray_list_prod">#5e5d5d</color>
+
+    <!-- DRAWER -->
+    <color name="black_trans">#33000000</color>
+
+    <!-- PROFILE -->
+    <color name="tab_selected">#f8ac2b</color>
+    <color name="black_font">#2b2b2b</color>
+    <color name="div">#5e5d5d</color>
+
+    <!-- HISTORY -->
+    <color name="font_gray">#919090</color>
+
+</resources>

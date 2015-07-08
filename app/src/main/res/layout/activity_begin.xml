@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.slice_group.telollevoparaguana.BeginActivity"
+    android:background="@drawable/back_main">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:id="@+id/linearLayout"
+        android:layout_above="@+id/linearLayout3">
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_tlp"/>
+
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/linearLayout3"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/user_Text"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/edit_main"
+            android:textColor="@android:color/black"
+            android:inputType="text"
+            android:imeOptions="actionSend"
+            android:hint="@string/want_go"
+            android:textColorHint="@color/form_font_main"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"/>
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout2"
+        android:layout_below="@+id/linearLayout3">
+
+        <Button
+            android:id="@+id/btn_Login"
+            style="@style/btn_white"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            android:layout_margin="10dp"/>
+
+        <Button
+            style="@style/btn_login"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/register"
+            android:layout_margin="10dp"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

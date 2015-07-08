@@ -1,0 +1,128 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.slice_group.telollevoparaguana.LoginActivity"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/user_Text"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo_tlp"/>
+
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/user_Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@android:color/black"
+        android:hint="@string/h_user"
+        android:textColorHint="@color/font_forms_login"/>
+
+    <EditText
+        android:id="@+id/pass_Text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user_Text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="@android:color/black"
+        android:hint="@string/h_pass"
+        android:textColorHint="@color/font_forms_login"
+        android:inputType="textPassword"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/lay_btn_login"
+        android:layout_below="@+id/pass_Text"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_Login"
+            style="@style/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sing_in"
+            android:textColor="@color/font_btns_login"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"/>
+
+        </LinearLayout>
+    
+
+
+    <LinearLayout
+        android:id="@+id/lay_btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:background="@color/btns_login"
+        android:gravity="center_vertical"
+        android:layout_alignParentBottom="true"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:id="@+id/new_PassLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.50"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:clickable="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/new_pass"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="@string/forgot_pass"
+                android:textColor="@color/font_btns_login"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/reg_UserLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.50"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:clickable="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/reg_user"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="@string/new_user"
+                android:textColor="@color/font_btns_login"
+                />
+
+            </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

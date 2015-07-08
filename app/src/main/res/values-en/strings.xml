@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Te Lo Llevo Paraguaná</string>
+    <string name="forgot_pass">Forgot password?</string>
+    <string name="new_user">New user</string>
+    <string name="h_user">E-mail</string>
+    <string name="h_pass">Password</string>
+    <string name="login">Login</string>
+    <string name="want_go">What do you want us to take you today?</string>
+    <string name="sing_in">Sing In</string>
+    <string name="register">Register</string>
+    <string name="site">Site</string>
+    <string name="product">Product</string>
+    <string name="price">Price</string>
+    <string name="time">Delivery time:</string>
+    <string name="order">Order</string>
+    <string name="title_activity_main">name</string>
+    <string name="bs">Bs.</string>
+    <string name="act_search">Search</string>
+    <string name="act_shop">Shopping Car</string>
+
+    <string name="home">Home</string>
+    <string name="orders">Orders</string>
+    <string name="about">About</string>
+    <string name="logout">Logout</string>
+    <string name="description">Description</string>
+    <string name="menu">Menu</string>
+    <string name="lorem">Lorem ipsum etsem deu</string>
+    <string name="address">Address</string>
+    <string name="loremlarge">Lorem ipsum etsem deu lorem ipsum etsem deu orem ipsum etsem deu orem ipsum etsem deu orem ipsum etsem deu</string>
+    <string name="kitechen">Kitechen type</string>
+    <string name="pay">Pay type</string>
+    <string name="back">Go Home</string>
+    <string name="menu_avaible">Menu Available</string>
+    <string name="process">Your order is on process</string>
+    <string name="detail">Order detail</string>
+    <string name="order_total">Order Total</string>
+    <string name="my_orders">My orders</string>
+    <string name="n_order">Order #</string>
+    <string name="total">Total</string>
+    <string name="date">Date</string>
+    <string name="status">Status</string>
+    <string name="order_detail">Order detail</string>
+    <string name="your_order">Your order</string>
+
+</resources>
