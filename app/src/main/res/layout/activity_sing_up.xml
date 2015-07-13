@@ -1,0 +1,171 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.slice_group.telollevoparaguana.SingUpActivity"
+    android:orientation="vertical"
+    android:background="@drawable/back_main"
+    android:gravity="center_vertical">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_logo_si"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp">
+
+        <ImageButton
+            style="@style/btn_sign"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/user"/>
+
+        <EditText
+            android:id="@+id/name_Text"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/edit_sign"
+            android:textColor="@android:color/black"
+            android:inputType="text"
+            android:imeOptions="actionSend"
+            android:hint="@string/name"
+            android:textColorHint="@color/form_font_main"
+            android:gravity="left|center"
+            android:paddingLeft="5dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp">
+
+        <ImageButton
+            style="@style/btn_sign"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/mail"/>
+
+        <EditText
+            android:id="@+id/mail_Text"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/edit_sign"
+            android:textColor="@android:color/black"
+            android:inputType="text"
+            android:imeOptions="actionSend"
+            android:hint="@string/mail"
+            android:textColorHint="@color/form_font_main"
+            android:gravity="left|center"
+            android:paddingLeft="5dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp">
+
+        <ImageButton
+            style="@style/btn_sign"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/lock"/>
+
+        <EditText
+            android:id="@+id/pass_Text"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/edit_sign"
+            android:textColor="@android:color/black"
+            android:inputType="text"
+            android:imeOptions="actionSend"
+            android:hint="@string/h_pass"
+            android:textColorHint="@color/form_font_main"
+            android:gravity="left|center"
+            android:paddingLeft="5dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp">
+
+        <ImageButton
+            style="@style/btn_sign"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/key"/>
+
+        <EditText
+            android:id="@+id/repass_Text"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/edit_sign"
+            android:textColor="@android:color/black"
+            android:inputType="text"
+            android:imeOptions="actionSend"
+            android:hint="@string/repass"
+            android:textColorHint="@color/form_font_main"
+            android:gravity="left|center"
+            android:paddingLeft="5dp"
+            />
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_Sign"
+        style="@style/btn_white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sing_in"
+        android:layout_above="@+id/btn_Exit"
+        android:layout_alignLeft="@+id/btn_Exit"
+        android:layout_alignStart="@+id/btn_Exit"
+        android:layout_alignRight="@+id/btn_Exit"
+        android:layout_alignEnd="@+id/btn_Exit"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/btn_Exit"
+        style="@style/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sing_in"
+        android:textColor="@color/font_btns_login"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+</RelativeLayout>

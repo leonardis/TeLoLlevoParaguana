@@ -58,4 +58,14 @@
         <item name="android:clickable">true</item>
     </style>
 
+    <style name="btn_sign" parent="@android:style/Widget.Button">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textColor">@color/white_main</item>
+        <item name="android:textSize">12dip</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/btn_sign</item>
+        <item name="android:focusable">false</item>
+        <item name="android:clickable">false</item>
+    </style>
+
 </resources>

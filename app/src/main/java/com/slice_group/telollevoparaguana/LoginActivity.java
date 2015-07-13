@@ -77,7 +77,8 @@ public class LoginActivity extends Activity {
         regUserLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "REG USER", Toast.LENGTH_LONG).show();
+                Intent signActivity = new Intent(getApplicationContext(), SingUpActivity.class);
+                startActivity(signActivity);
             }
         });
 

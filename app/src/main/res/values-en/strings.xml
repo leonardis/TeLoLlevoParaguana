@@ -43,5 +43,8 @@
     <string name="status">Status</string>
     <string name="order_detail">Order detail</string>
     <string name="your_order">Your order</string>
+    <string name="name">Full Name</string>
+    <string name="mail">User Email</string>
+    <string name="repass">Confirm password</string>
 
 </resources>

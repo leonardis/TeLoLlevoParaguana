@@ -48,5 +48,9 @@
     <string name="order_detail">Detalles del pedido</string>
     <string name="title_activity_shopping_car">ShoppingCarActivity</string>
     <string name="your_order">Tu pedido</string>
+    <string name="title_activity_sing_up">SingUpActivity</string>
+    <string name="name">Nombre Completo</string>
+    <string name="mail">Email de usuario</string>
+    <string name="repass">Confirme contraseña</string>
 
 </resources>
