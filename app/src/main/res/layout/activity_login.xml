@@ -28,7 +28,8 @@
         android:layout_marginRight="30dp"
         android:textColor="@android:color/black"
         android:hint="@string/h_user"
-        android:textColorHint="@color/font_forms_login"/>
+        android:textColorHint="@color/font_forms_login"
+        android:inputType="textEmailAddress"/>
 
     <EditText
         android:id="@+id/pass_Text"

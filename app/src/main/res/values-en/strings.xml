@@ -46,5 +46,6 @@
     <string name="name">Full Name</string>
     <string name="mail">User Email</string>
     <string name="repass">Confirm password</string>
+    <string name="sing_up">Sing Up</string>
 
 </resources>

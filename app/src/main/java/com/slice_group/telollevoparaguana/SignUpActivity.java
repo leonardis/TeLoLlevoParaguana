@@ -6,12 +6,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -24,74 +26,48 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class LoginActivity extends Activity {
+public class SignUpActivity extends Activity {
 
     private Context context;
 
-    private static EditText userText, passText;
-    private static Button loginButton;
-    private static LinearLayout newPassLayout, regUserLayout;
+    private static EditText txtName, txtEmail, txtPass, txtRepass;
+    private static Button btnSign;
 
-    private static Login login;
-
-    public static Activity activity;
+    private static SignUp signUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_sing_up);
 
         context = this.getApplicationContext();
-        activity = this;
 
-        login = new Login(this);
+        signUp = new SignUp(this);
 
-        userText = (EditText) findViewById(R.id.user_Text);
-        passText = (EditText) findViewById(R.id.pass_Text);
-        loginButton = (Button) findViewById(R.id.btn_Login);
-        newPassLayout = (LinearLayout) findViewById(R.id.new_PassLayout);
-        regUserLayout = (LinearLayout) findViewById(R.id.reg_UserLayout);
+        txtName = (EditText) findViewById(R.id.name_Text);
+        txtEmail = (EditText) findViewById(R.id.mail_Text);
+        txtPass = (EditText) findViewById(R.id.pass_Text);
+        txtRepass = (EditText) findViewById(R.id.repass_Text);
 
-        LoadPreferences();
+        btnSign = (Button) findViewById(R.id.btn_Sign);
 
-        loginButton.setOnClickListener(new View.OnClickListener() {
+        btnSign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            String user = userText.getText().toString();
-            String pass = passText.getText().toString();
+                String name = txtName.getText().toString();
+                String mail = txtEmail.getText().toString();
+                String pass = txtPass.getText().toString();
+                String repass = txtRepass.getText().toString();
 
-                if(user.equals("")||pass.equals("")){
+                if(name.equals("")||pass.equals("")||mail.equals("")||repass.equals("")){
                     Toast.makeText(context, "Los campos no pueden estar vacios!", Toast.LENGTH_LONG).show();
                 }else {
-                    login.execute(user, pass);
+                    signUp.execute(name, mail, pass, repass);
                 }
+
             }
         });
 
-        newPassLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "PASSWORD LOST", Toast.LENGTH_LONG).show();
-            }
-        });
-
-        regUserLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent signActivity = new Intent(getApplicationContext(), SignUpActivity.class);
-                startActivity(signActivity);
-            }
-        });
-
-    }
-
-    private void LoadPreferences(){
-        SharedPreferences sharedPreferences = getSharedPreferences("USER_DATA", MODE_PRIVATE);
-        String strSavedEmail = sharedPreferences.getString("email", "");
-        userText.setText(strSavedEmail);
-        if(!userText.equals(""))
-            passText.requestFocus();
-            passText.setCursorVisible(true);
     }
 
     private void SavePreferences(String email, String role_name, String name, String token){
@@ -104,13 +80,13 @@ public class LoginActivity extends Activity {
         editor.commit();
     }
 
-    class Login extends AsyncTask<String, String, String>{
+    class SignUp extends AsyncTask<String, String, String> {
 
         private ProgressDialog progressDialog;
 
         private Activity activity;
 
-        Login(Activity activity){
+        SignUp(Activity activity){
             progressDialog = new ProgressDialog(activity);
             this.activity = activity;
         }
@@ -118,7 +94,7 @@ public class LoginActivity extends Activity {
         @Override
         protected void onPreExecute(){
             super.onPreExecute();
-            progressDialog.setMessage("Iniciando Sesión");
+            progressDialog.setMessage("Enviando Datos");
             progressDialog.setIndeterminate(true);
             progressDialog.setIndeterminateDrawable(getResources().getDrawable(R.drawable.circle_progress));
             progressDialog.setCancelable(false);
@@ -133,7 +109,7 @@ public class LoginActivity extends Activity {
 
             HttpClient httpClient = new DefaultHttpClient();
 
-            HttpPost post = new HttpPost("http://testing.tremmelweb.com/api/authenticate");
+            HttpPost post = new HttpPost("http://testing.tremmelweb.com/api/authenticate/sign_up");
 
             post.setHeader("content-type", "application/json");
 
@@ -141,8 +117,11 @@ public class LoginActivity extends Activity {
 
                 JSONObject datos = new JSONObject();
 
-                datos.put("email", params[0].toString());
-                datos.put("password", params[1].toString());
+                datos.put("name", params[0].toString());
+                datos.put("email", params[1].toString());
+                datos.put("password", params[2].toString());
+                datos.put("password_confirmation", params[3].toString());
+
 
                 StringEntity entity = new StringEntity(datos.toString());
                 post.setEntity(entity);
@@ -176,18 +155,20 @@ public class LoginActivity extends Activity {
                     JSONObject user = new JSONObject(obj.getString("user"));
 
                     SavePreferences(user.getString("email"), user.getString("role_name"), user.getString("name"), user.getString("authentication_token"));
-                    Log.d("id",user.getString("id"));
+                    Log.d("id", user.getString("id"));
 
                     Toast.makeText(activity.getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
 
                     Intent main = new Intent(activity.getApplicationContext(), MainActivity.class);
                     startActivity(main);
                     finish();
+                    LoginActivity.activity.finish();
 
                 }else{
                     progressDialog.dismiss();
                     Toast.makeText(activity.getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
-                    passText.setText("");
+                    txtPass.setText("");
+                    txtRepass.setText("");
                 }
 
             }catch (JSONException ex){
@@ -196,5 +177,4 @@ public class LoginActivity extends Activity {
 
         }
     }
-
 }

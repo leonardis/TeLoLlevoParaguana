@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.slice_group.telollevoparaguana.SingUpActivity"
+    tools:context="com.slice_group.telollevoparaguana.SignUpActivity"
     android:orientation="vertical"
     android:background="@drawable/back_main"
     android:gravity="center_vertical">
@@ -10,8 +10,13 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:src="@drawable/ic_logo_si"/>
+        android:src="@drawable/ic_logo_si"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -69,7 +74,7 @@
             android:layout_height="40dp"
             android:background="@drawable/edit_sign"
             android:textColor="@android:color/black"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:imeOptions="actionSend"
             android:hint="@string/mail"
             android:textColorHint="@color/form_font_main"
@@ -99,7 +104,7 @@
             android:layout_height="40dp"
             android:background="@drawable/edit_sign"
             android:textColor="@android:color/black"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:imeOptions="actionSend"
             android:hint="@string/h_pass"
             android:textColorHint="@color/form_font_main"
@@ -129,7 +134,7 @@
             android:layout_height="40dp"
             android:background="@drawable/edit_sign"
             android:textColor="@android:color/black"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:imeOptions="actionSend"
             android:hint="@string/repass"
             android:textColorHint="@color/form_font_main"
@@ -146,15 +151,15 @@
         style="@style/btn_white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sing_in"
-        android:layout_above="@+id/btn_Exit"
-        android:layout_alignLeft="@+id/btn_Exit"
-        android:layout_alignStart="@+id/btn_Exit"
-        android:layout_alignRight="@+id/btn_Exit"
-        android:layout_alignEnd="@+id/btn_Exit"
-        android:layout_marginBottom="10dp"/>
+        android:text="@string/sing_up"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
 
-    <Button
+    <!--Button
         android:id="@+id/btn_Exit"
         style="@style/btn_login"
         android:layout_width="match_parent"
@@ -166,6 +171,6 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="30dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"/>
+        android:layout_marginRight="20dp"/-->
 
 </RelativeLayout>

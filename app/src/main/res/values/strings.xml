@@ -52,5 +52,6 @@
     <string name="name">Nombre Completo</string>
     <string name="mail">Email de usuario</string>
     <string name="repass">Confirme contraseña</string>
+    <string name="sing_up">Registrar</string>
 
 </resources>
