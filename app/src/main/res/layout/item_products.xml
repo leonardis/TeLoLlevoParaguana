@@ -1,16 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="wrap_content"
+    >
+    
+    <android.support.v7.widget.CardView
+        android:id="@+id/card1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@android:color/white"
+        android:layout_margin="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/relativeLayout2">
+
+                <ImageView
+                    android:id="@+id/productImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_logo_si"
+                    android:scaleType="centerCrop"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:background="@drawable/background_text">
+
+                    <TextView
+                        android:id="@+id/productName"
+                        android:layout_width="297dp"
+                        android:layout_height="match_parent"
+                        android:paddingLeft="10dp"
+                        android:gravity="center_vertical"
+                        android:text="HOLA"
+
+                        android:textColor="#fff"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_alignRight="@+id/productPrice"
+                        android:layout_alignEnd="@+id/productPrice"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true" />
+
+                    <TextView
+                        android:id="@+id/productPrice"
+                        android:layout_width="80dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="300"
+                        android:textColor="#fff"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true" />
+
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_alignParentBottom="true"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="HOLITAS"
+                    android:id="@+id/desc"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:paddingBottom="10dp" />
+
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentBottom="true"
+                    android:id="@+id/siteName"
+                    android:gravity="bottom"
+                    android:textColor="@color/font_gray"
+                    android:textStyle="bold"
+                    android:textSize="14dp"/>
+
+            </RelativeLayout>
+
+            <com.melnykov.fab.FloatingActionButton
+                android:id="@+id/addToCar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_add_white_24dp"
+                fab:fab_colorNormal="@color/red_main"
+                fab:fab_colorPressed="#ef5350"
+                fab:fab_colorRipple="#e57373"
+                fab:fab_type="mini"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginRight="10dp"/>
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>
+<!--RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
     android:background="@android:color/white">
+
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/shadow"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/productBack"/>
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/check"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/productImgCheck"/>
 
     <ImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:src="@drawable/ic_launcher"
-        android:layout_margin="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:layout_alignParentLeft="true"
-        android:id="@+id/productImg" />
+        android:id="@+id/productImg"/>
+
+
     
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,23 +166,25 @@
         android:layout_toRightOf="@+id/productImg"
         android:layout_toLeftOf="@+id/linearLayout4"
         android:layout_toStartOf="@+id/linearLayout4"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/siteName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16dp"
-            android:text="@string/site"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/black_item_prod"/>
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp">
 
         <TextView
             android:id="@+id/productName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="18dp"
             android:text="@string/product"
+            android:layout_alignParentTop="true"
+            android:textColor="@color/black_item_prod"/>
+
+        <TextView
+            android:id="@+id/siteName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/site"
             android:layout_centerVertical="true"
             android:layout_marginTop="1dp"
             android:textColor="@color/black_item_prod"/>
@@ -46,38 +196,39 @@
             android:textSize="12dp"
             android:text="@string/time"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="2dp"
             android:textColor="@color/gray_item_prod"/>
         
     </LinearLayout>
     
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="100dp"
-        android:layout_height="fill_parent"
+        android:layout_height="70dp"
         android:layout_alignParentRight="true"
         android:id="@+id/linearLayout4"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:gravity="center_vertical"
+        android:padding="5dp">
 
         <TextView
             android:id="@+id/productPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:textSize="14dp"
+            android:gravity="center"
             android:text="@string/price"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="5dp"
-            android:textColor="@color/black_item_prod"/>
+            android:textColor="@color/black_item_prod"
+            android:layout_centerInParent="true"/>
 
-        <Button
+        <!-Button
             android:id="@+id/orderButton"
             android:layout_width="70dp"
             android:layout_height="30dp"
             android:text="@string/order"
             style="@style/btn_yellow"
             android:layout_gravity="center"
-            android:gravity="center_vertical|center_horizontal"/>
+            android:gravity="center_vertical|center_horizontal"/->
 
-    </LinearLayout>
+    </RelativeLayout>
 
-</RelativeLayout>
+</RelativeLayout-->

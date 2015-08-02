@@ -1,38 +1,37 @@
 package com.slice_group.telollevoparaguana;
 
+import android.app.SearchManager;
+import android.content.Context;
+import android.support.v4.view.MenuItemCompat;
+import android.support.v7.app.ActionBar;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.TypedArray;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.Toolbar;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.AdapterView;
-import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.melnykov.fab.FloatingActionButton;
+import com.slice_group.telollevoparaguana.ListProductLazy.LazyImageLoadAdapter;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
@@ -42,51 +41,47 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class MainActivity extends ActionBarActivity{
-
-    private Context context;
-
-    public static ListView productList;
-    private static ProductAdapter productAdapter;
+/**
+ * Created by pancracio on 21/07/15.
+ * e-Mail: leonardisrojas@gmail.com
+ */
+public class MainActivity extends ActionBarActivity  {
+    ListView productList;
+    LazyImageLoadAdapter adapter;
     private static ArrayList<ProductModel> arrayList;
-    //public static ProductModel productModel;
-    private static Button orderButton;
-
-    private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
-    private ActionBarDrawerToggle mDrawerToggle;
-
-    private String[] navMenuTitles;
-    private TypedArray navMenuIcons;
-
-    private ArrayList<DrawerModel> navDrawerItems;
-    private DrawerAdapter adapter;
-
-    private static MenuDialog menuDialog;
 
     private static MainList mainList;
+    private Activity activity;
+
+    private static View mCustomView;
+    private static TextView counterText;
+
+    private static String nProducto[];
+    private static String nSitio[];
+    private static int idProducto[];
+    private static Double precioProducto[];
+    private static Boolean pedidos[];
+    private static ArrayList<String> nombreProducto;
+
+    private static int counter = 0;
+
+    private static ImageButton goToCar, clearButton, searchButton, overflowButton, backButton;
+    private static EditText searchEdit;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        context = this.getApplicationContext();
+        activity = this;
 
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        actionBar.setCustomView(R.layout.action_bar_custom);
 
         mainList = new MainList(this);
 
-        productList = (ListView) findViewById(R.id.list_products);
+        productList=(ListView)findViewById(R.id.listProduct);
+        //productList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         arrayList = new ArrayList<ProductModel>();
-
-        productAdapter = new ProductAdapter(this, arrayList, this.getResources());
-        productList.setAdapter(productAdapter);
-
-        View view = (View) LayoutInflater.from(getApplicationContext()).inflate(R.layout.item_products, null);
-        orderButton = (Button) view.findViewById(R.id.orderButton);
+        nombreProducto = new ArrayList<String>();
 
         String query = "";
         Bundle extras = getIntent().getExtras();
@@ -96,83 +91,211 @@ public class MainActivity extends ActionBarActivity{
 
         }
 
-        /*orderButton.setOnClickListener(new View.OnClickListener() {
+        ActionBar mActionBar = this.getSupportActionBar();
+        mActionBar.setDisplayShowHomeEnabled(false);
+        mActionBar.setDisplayShowTitleEnabled(false);
+        LayoutInflater mInflater = LayoutInflater.from(this);
+
+        mCustomView = mInflater.inflate(R.layout.action_bar_custom, null);
+        counterText = (TextView) mCustomView.findViewById(R.id.counter);
+        counterText.setVisibility(View.INVISIBLE);
+
+        goToCar = (ImageButton) mCustomView.findViewById(R.id.car_button);
+        goToCar.setVisibility(View.INVISIBLE);
+
+        goToCar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), ProductModel.getNomSite(), Toast.LENGTH_LONG).show();
+                if (nProducto != null) {
+                    int cont = 0;
+                    for (int i = 0; i < nProducto.length; i++) {
+                        if (pedidos[i]) {
+                            cont+=1;
+                            Log.d("NOMBRE", nProducto[i]);
+                            Log.d("CHECKLST", pedidos[i].toString());
+                            nombreProducto.add(nProducto[i]);
+                        }
+                    }
+                }
+                if(nombreProducto != null){
+                    Intent shoppingCar = new Intent(activity, ShoppingCarActivity.class);
+                    shoppingCar.putExtra("NOMBRE", nombreProducto);
+                    startActivity(shoppingCar);
+                }
             }
         });
 
-        /*navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
+        clearButton = (ImageButton) mCustomView.findViewById(R.id.clearButton);
+        clearButton.setVisibility(View.INVISIBLE);
 
-        navMenuIcons = getResources().obtainTypedArray(R.array.nav_drawer_icons);
+        searchButton = (ImageButton) mCustomView.findViewById(R.id.search_button);
+        overflowButton = (ImageButton) mCustomView.findViewById(R.id.overButton);
+        //backButton = (ImageButton) mCustomView.findViewById(R.id.backButton);
+        //backButton.setVisibility(View.INVISIBLE);
 
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.list_products);
+        searchEdit = (EditText) mCustomView.findViewById(R.id.searchEdit);
+        searchEdit.setVisibility(View.INVISIBLE);
 
-        navDrawerItems = new ArrayList<DrawerModel>();
-
-        for(int i=0; i<=navMenuTitles.length-1; i++){
-            navDrawerItems.add(new DrawerModel(navMenuTitles[i], navMenuIcons.getResourceId(i, -1)));
-        }
-
-        navMenuIcons.recycle();
-
-        adapter = new DrawerAdapter(getApplicationContext(), navDrawerItems);
-        mDrawerList.setAdapter(adapter);
-
-        //View customActionBarView = actionBar.getCustomView();
-
-        /*ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayShowHomeEnabled(false);
-        actionBar.setDisplayHomeAsUpEnabled(false);
-        actionBar.setDisplayShowTitleEnabled(false);
-        actionBar.setDisplayUseLogoEnabled(false);
-        actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        actionBar.setDisplayShowCustomEnabled(true);
-        ActionBar.LayoutParams params = new ActionBar.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-
-        LayoutInflater mInflater = LayoutInflater.from(this);
-        View customBar = mInflater.inflate(R.layout.action_bar_custom, null);
-
-        actionBar.setCustomView(customBar, params);*/
-
-
-
-        /*final WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
-        lp.copyFrom(this.getWindow().getAttributes());
-        lp.gravity= Gravity.LEFT;
-        lp.width = WindowManager.LayoutParams.WRAP_CONTENT;
-        lp.height = WindowManager.LayoutParams.MATCH_PARENT;
-
-
-        menuDialog = new MenuDialog(this);
-        final ImageButton menu = (ImageButton) findViewById(R.id.drawerButton);
-        menu.setOnClickListener(new View.OnClickListener() {
+        searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                menuDialog.getWindow().setAttributes(lp);
-                menuDialog.getWindow().setBackgroundDrawableResource(R.color.black_trans);
-                menuDialog.setCanceledOnTouchOutside(true);
-                /*menuDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                    @Override
-                    public void onDismiss(DialogInterface dialog) {
-                        dialog.dismiss();
+                if(!clearButton.isShown()) {
+                    overflowButton.setVisibility(View.INVISIBLE);
+                    searchEdit.setVisibility(View.VISIBLE);
+                    clearButton.setVisibility(View.VISIBLE);
+                    goToCar.setVisibility(View.INVISIBLE);
+                    counterText.setVisibility(View.INVISIBLE);
+                }else{
+                    overflowButton.setVisibility(View.VISIBLE);
+                    searchEdit.setVisibility(View.INVISIBLE);
+                    clearButton.setVisibility(View.INVISIBLE);
+                    if(counter<=0) {
+                        goToCar.setVisibility(View.INVISIBLE);
+                        counterText.setVisibility(View.INVISIBLE);
+                    }else {
+                        goToCar.setVisibility(View.VISIBLE);
+                        counterText.setVisibility(View.VISIBLE);
                     }
-                });
-                menuDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                        Log.d("","");
-                        dialog.dismiss();
+                }
+            }
+        });
+
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                overflowButton.setVisibility(View.VISIBLE);
+                searchEdit.setVisibility(View.INVISIBLE);
+                clearButton.setVisibility(View.INVISIBLE);
+                if(counter<=0) {
+                    goToCar.setVisibility(View.INVISIBLE);
+                    counterText.setVisibility(View.INVISIBLE);
+                }else {
+                    goToCar.setVisibility(View.VISIBLE);
+                    counterText.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+
+        /*fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                if (nProducto != null) {
+                    int cont = 0;
+                    for (int i = 0; i < nProducto.length; i++) {
+                        if (pedidos[i]) {
+                            cont+=1;
+                            Log.d("NOMBRE", nProducto[i]);
+                            Log.d("CHECKLST", pedidos[i].toString());
+                            nombreProducto.add(nProducto[i]);
+                        }
                     }
-                });*
-                menuDialog.show();
+                }
+                if(nombreProducto != null){
+                    Intent shoppingCar = new Intent(activity, ShoppingCarActivity.class);
+                    shoppingCar.putExtra("NOMBRE", nombreProducto);
+                    startActivity(shoppingCar);
+                }
             }
         });*/
 
+        mActionBar.setCustomView(mCustomView);
+        mActionBar.setDisplayShowCustomEnabled(true);
+
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        productList.setAdapter(null);
+        super.onDestroy();
+    }
+
+    public void onRestClick(){
+        Toast.makeText(activity.getApplicationContext(), "RESTAURANT", Toast.LENGTH_LONG).show();
+        Intent profile = new Intent(activity, ProfileAcrivity.class);
+        startActivity(profile);
+    }
+
+    public void onItemClick(int mPosition, FloatingActionButton addToCar, Boolean check[]){
+
+        if(!check[mPosition]){
+
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inMutable = false;
+            Bitmap remove = BitmapFactory.decodeResource(getResources(), R.drawable.ic_clear_white_24dp, options);
+
+            counter+=1;
+
+            pedidos[mPosition] = true;
+
+            counterText.setText(Integer.toString(counter));
+            if(!clearButton.isShown()){
+                counterText.setVisibility(View.VISIBLE);
+                goToCar.setVisibility(View.VISIBLE);
+            }else{
+                counterText.setVisibility(View.INVISIBLE);
+                goToCar.setVisibility(View.INVISIBLE);
+            }
+            addToCar.setImageBitmap(remove);
+        }else{
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inMutable = false;
+            Bitmap add = BitmapFactory.decodeResource(getResources(), R.drawable.ic_add_white_24dp, options);
+
+            counter-=1;
+
+            pedidos[mPosition] = false;
+
+            if(counter!=0)
+                counterText.setText(Integer.toString(counter));
+            else{
+                counterText.setVisibility(View.INVISIBLE);
+                goToCar.setVisibility(View.INVISIBLE);
+            }
+
+            addToCar.setImageBitmap(add);
+        }
+
+        /*if(!check[mPosition]) {
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inMutable = false;
+            Bitmap avatar = BitmapFactory.decodeResource(getResources(), R.drawable.check, options);
+
+            RoundedAvatarDrawable roundedAvatar = new RoundedAvatarDrawable(avatar);
+
+            imgCheck.setImageDrawable(roundedAvatar);
+            imagen.setVisibility(View.INVISIBLE);
+            imgCheck.setVisibility(View.VISIBLE);
+            vi.setBackgroundColor(getResources().getColor(R.color.font_gray));
+
+            counter+=1;
+
+            counterText.setText(Integer.toString(counter));
+            counterText.setVisibility(View.VISIBLE);
+
+            pedidos[mPosition] = true;
+            fab.show();
 
 
+        }else{
+            imgCheck.setVisibility(View.INVISIBLE);
+            imagen.setVisibility(View.VISIBLE);
+            vi.setBackgroundColor(getResources().getColor(R.color.white_main));
+
+            counter-=1;
+
+            pedidos[mPosition] = false;
+
+            if(counter!=0)
+                counterText.setText(Integer.toString(counter));
+            else{
+                counterText.setVisibility(View.INVISIBLE);
+                fab.hide();
+            }
+        }*/
     }
 
     class MainList extends AsyncTask<String, String, String> {
@@ -206,7 +329,7 @@ public class MainActivity extends ActionBarActivity{
             String query = params[0].toString();
 
             HttpGet request =
-                    new HttpGet("http://testing.tremmelweb.com/api/search?query=" + query);
+                    new HttpGet("http://qcomerenparaguana.com/api/search?query=" + query);
 
             request.setHeader("content-type", "application/json");
 
@@ -235,6 +358,7 @@ public class MainActivity extends ActionBarActivity{
             arrayList.removeAll(arrayList);
             productList.setAdapter(null);
 
+
             try {
                 JSONObject obj = new JSONObject(result);
 
@@ -243,46 +367,66 @@ public class MainActivity extends ActionBarActivity{
                 Log.d("success",obj.getString("dishes"));
                 if((obj.getInt("totalItems")>0)&&progressDialog.isShowing()){
 
+                    nProducto = new String[respJSON.length()];
+                    nSitio = new String[respJSON.length()];
+                    idProducto = new int[respJSON.length()];
+                    precioProducto = new Double[respJSON.length()];
+                    pedidos = new Boolean[respJSON.length()];
+
                     for (int i=0; i<respJSON.length(); i++){
                         JSONObject obj2 = respJSON.getJSONObject(i);
+
+                        pedidos[i] = false;
 
                         int id = obj2.getInt("id");
                         Log.d("ID", Integer.toString(id));
 
                         JSONObject obj3 = respJSON.getJSONObject(i).getJSONObject("establishment");
 
-                        Log.d("obj3",obj3.getString("name"));
+                        Log.d("obj2",obj2.getString("name"));
+
+                        JSONObject obj4 = respJSON.getJSONObject(i).getJSONObject("image");
+
+                        nProducto[i] = obj2.getString("name");
+                        nSitio[i] = obj3.getString("name");
+                        idProducto[i] = obj2.getInt("id");
+                        precioProducto[i] = Double.parseDouble(obj2.getString("price"));
 
                         String nomSite = "";
-                        nomSite = obj3.getString("name").substring(0, 22);
+                        if (obj3.getString("name").length()>=22) {
+                            nomSite = obj3.getString("name").substring(0, 22);
+                            arrayList.add(new ProductModel(obj2.getString("name"),obj2.getString("description"),"http://qcomerenparaguana.com"+obj4.getString("url"),nomSite+"...",activity.getResources().getString(R.string.bs)+" "+obj2.getString("price"), false));
 
-                        /*productModel = new ProductModel();
+                        }else{
+                            nomSite = obj3.getString("name");
+                            arrayList.add(new ProductModel(obj2.getString("name"),obj2.getString("description"),"http://qcomerenparaguana.com"+obj4.getString("url"),nomSite,activity.getResources().getString(R.string.bs)+" "+obj2.getString("price"), false));
 
-                        productModel.setNomProduct(nomSite+"...");
-                        productModel.setNomSite(obj2.getString("name"));
-                        productModel.setTmpDelivery(activity.getResources().getString(R.string.time) + obj2.getString("delivery_time"));
-                        productModel.setValProduct(activity.getResources().getString(R.string.bs)+" "+obj2.getString("price"));
-                        */
-                        arrayList.add(new ProductModel(obj2.getString("name"),"",nomSite+"...",activity.getResources().getString(R.string.time) + obj2.getString("delivery_time"),activity.getResources().getString(R.string.bs)+" "+obj2.getString("price")));
+                        }
+
                     }
 
                     progressDialog.dismiss();
 
 
                 }
-                productAdapter = new ProductAdapter(activity, arrayList, activity.getResources());
-                productList.setAdapter(productAdapter);
+
+                // Create custom adapter for listview
+                adapter=new LazyImageLoadAdapter(activity, arrayList);
+
+                //Set adapter to listview
+                productList.setAdapter(adapter);
+
+
 
             }catch (JSONException ex){
                 Log.e("ERROR JSON", ex.toString());
+                progressDialog.dismiss();
+                Toast.makeText(activity.getApplicationContext(), "Se produjo un error al realizar la Busqueda.", Toast.LENGTH_LONG).show();
+                Intent main = new Intent(activity.getApplicationContext(), BeginActivity.class);
+                startActivity(main);
+                finish();
             }
 
-            productList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Log.d("","CLICK CLICK CLICK");
-                }
-            });
 
         }
     }

@@ -6,10 +6,14 @@ import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -17,7 +21,7 @@ import java.util.ArrayList;
  * Created by pancracio on 17/05/15.
  * e-Mail: leonardisrojas@gmail.com
  */
-public class ProductAdapter extends BaseAdapter {
+public class ProductAdapter extends BaseAdapter implements OnClickListener{
 
     private Activity activity;
     private ArrayList datos;
@@ -53,29 +57,27 @@ public class ProductAdapter extends BaseAdapter {
 
     public static class ViewHolder{
 
-        public ImageView productImg;
         public TextView siteName;
         public TextView prodctName;
-        public TextView timeDelivery;
         public TextView productPrice;
+        public RelativeLayout editButton;
 
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
 
         View vi = convertView;
-        ViewHolder holder;
+        final ViewHolder holder;
 
         if(convertView==null){
 
-            vi = inflater.inflate(R.layout.item_products, null);
+            vi = inflater.inflate(R.layout.item_detail_history, null);
 
             holder = new ViewHolder();
-            holder.productImg = (ImageView)vi.findViewById(R.id.productImg);
-            holder.siteName = (TextView) vi.findViewById(R.id.siteName);
-            holder.prodctName = (TextView)vi.findViewById(R.id.productName);
-            holder.timeDelivery = (TextView)vi.findViewById(R.id.timeDelivery);
-            holder.productPrice = (TextView)vi.findViewById(R.id.productPrice);
+            holder.siteName = (TextView) vi.findViewById(R.id.n_item);
+            holder.prodctName = (TextView)vi.findViewById(R.id.n_rest);
+            holder.productPrice = (TextView)vi.findViewById(R.id.price);
+            holder.editButton = (RelativeLayout)vi.findViewById(R.id.editButton);
 
             vi.setTag( holder );
         }
@@ -94,14 +96,32 @@ public class ProductAdapter extends BaseAdapter {
 
             holder.siteName.setText( listValues.getNomSite() );
             holder.prodctName.setText( listValues.getNomProduct() );
-            holder.timeDelivery.setText( listValues.getTmpDelivery() );
             holder.productPrice.setText( listValues.getValProduct() );
-            holder.productImg.setImageDrawable(resources.getDrawable(R.drawable.ic_launcher));
 
         }
+
+        holder.editButton.setOnClickListener(new OnItemClickListener(position));
         return vi;
     }
 
+    @Override
+    public void onClick(View v) {
+
+    }
+
+    private class OnItemClickListener  implements OnClickListener{
+        private int mPosition;
+
+        OnItemClickListener(int position){
+            mPosition = position;
+        }
+
+        @Override
+        public void onClick(View arg0) {
+            ShoppingCarActivity sct = (ShoppingCarActivity)activity;
+            sct.onItemClick(mPosition);
 
 
+        }
+    }
 }

@@ -34,7 +34,7 @@ public class SplashActivity extends Activity {
             public void run(){
                 while (progressStatus < 100)
                 {
-                    progressStatus += 10;
+                    progressStatus += 5;
                     handler.post(new Runnable()
                     {
                         public void run()

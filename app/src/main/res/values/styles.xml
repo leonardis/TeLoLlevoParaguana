@@ -58,6 +58,16 @@
         <item name="android:clickable">true</item>
     </style>
 
+    <style name="btn_yellow_square" parent="@android:style/Widget.Button">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textColor">@color/white_main</item>
+        <item name="android:textSize">12dip</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/btn_yellow_square</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+    </style>
+
     <style name="btn_sign" parent="@android:style/Widget.Button">
         <item name="android:gravity">center_vertical|center_horizontal</item>
         <item name="android:textColor">@color/white_main</item>

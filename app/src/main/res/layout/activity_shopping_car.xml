@@ -1,10 +1,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white_main">
+    android:orientation="vertical">
 
-    <LinearLayout
+    <!--LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="center_vertical"
@@ -25,21 +24,44 @@
             android:textSize="18dp"
             android:textColor="@color/black_font"/>
 
-    </LinearLayout>
+    </LinearLayout-->
 
     <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/listOrdersDetail"
-        android:layout_below="@+id/linearLayout6"/>
+        android:dividerHeight="1dp"
+        android:divider="@android:color/transparent"
+        android:layout_above="@+id/linearLayout7"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="5dp"/>
+    <!--ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/div"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/listOrdersDetail"
+        android:id="@+id/imageView" /-->
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/div"
+        android:layout_above="@+id/linearLayout7"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/imageView2" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:orientation="horizontal"
         android:gravity="right|center_vertical"
-        android:paddingRight="15dp"
-        android:layout_below="@+id/listOrdersDetail">
+        android:id="@+id/linearLayout7"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/white_main">
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,31 +70,37 @@
             android:id="@+id/textView"
             android:layout_marginRight="5dp"/>
 
-        <LinearLayout
+        <TextView
             android:layout_width="100dp"
-            android:layout_height="25dp"
-            android:gravity="center"
-            android:background="@drawable/border_layout">
+            android:layout_height="wrap_content"
+            android:text="Bs. 999.999,99"
+            android:id="@+id/price"
+            android:gravity="right"
+            android:textColor="@color/black_font"
+            />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/price"/>
+        <ImageButton
+            android:id="@+id/goToPay"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_send_white_24dp"
+            style="@style/btn_yellow_square"
+            android:layout_marginLeft="5dp"/>
 
-        </LinearLayout>
     </LinearLayout>
 
 
-    <Button
-        android:id="@+id/goBackButton"
+    <!--Button
+        android:id="@+id/goToPay"
         android:layout_width="250dp"
         android:layout_height="50dp"
-        android:text="@string/back"
+        android:text="Solicitar Pedido"
         style="@style/btn_yellow"
         android:textSize="20dp"
         android:gravity="center_vertical|center_horizontal"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="5dp"/-->
 
 </RelativeLayout>

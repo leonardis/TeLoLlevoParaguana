@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:com.slice_group.telollevoparaguana="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/action_search"
+        android:title="Search"
+        android:icon="@drawable/ic_search_white"
+        com.slice_group.telollevoparaguana:showAsAction="ifRoom|collapseActionView"
+        com.slice_group.telollevoparaguana:actionViewClass="android.support.v7.widget.SearchView"/>
+
+</menu>

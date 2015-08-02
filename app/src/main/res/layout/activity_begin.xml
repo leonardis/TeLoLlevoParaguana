@@ -20,8 +20,6 @@
 
     </LinearLayout>
 
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -29,32 +27,16 @@
         android:id="@+id/linearLayout3"
         android:gravity="center">
 
-        <EditText
-            android:id="@+id/user_Text"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@drawable/edit_main"
-            android:textColor="@android:color/black"
-            android:inputType="text"
-            android:imeOptions="actionSend"
-            android:hint="@string/want_go"
-            android:textColorHint="@color/form_font_main"
-            android:gravity="center"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"/>
-
-        </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
         android:id="@+id/linearLayout2"
-        android:layout_below="@+id/linearLayout3">
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp">
 
         <Button
             android:id="@+id/btn_Login"
@@ -64,14 +46,24 @@
             android:text="@string/login"
             android:layout_margin="10dp"/>
 
-        <Button
-            style="@style/btn_login"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="@string/register"
-            android:layout_margin="10dp"/>
 
     </LinearLayout>
+
+    <EditText
+        android:id="@+id/user_Text"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/edit_main"
+        android:textColor="@android:color/black"
+        android:inputType="text"
+        android:imeOptions="actionSend"
+        android:hint="@string/want_go"
+        android:textColorHint="@color/form_font_main"
+        android:gravity="center"
+        android:layout_below="@+id/linearLayout3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"/>
 
 
 </RelativeLayout>

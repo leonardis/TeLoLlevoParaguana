@@ -2,56 +2,157 @@
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" 
     tools:context="com.slice_group.telollevoparaguana.ProfileAcrivity">
-    
-    
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/cabezera"
+        >
+
+        <ImageView
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:src="@drawable/ic_logo_si"/>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@android:color/white"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="5dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_launcher"/>
+
+        </android.support.v7.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/background_text"
+            android:layout_alignTop="@+id/card1">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nombre de Sitio"
+                android:id="@+id/siteName"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="108dp"
+                android:layout_marginStart="108dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:textSize="18dp"
+                android:textColor="@color/white_main"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Descripcion"
+                android:id="@+id/desc"
+                android:layout_below="@id/siteName"
+                android:layout_alignRight="@id/siteName"
+                android:layout_alignEnd="@id/siteName"
+                android:layout_alignLeft="@id/siteName"
+                android:layout_alignStart="@id/siteName"
+                android:layout_alignParentBottom="true"
+                android:textColor="@color/white_main"
+                />
+
+
+        </RelativeLayout>
+
+        <!--ImageView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/red_main"
+            android:layout_below="@id/banner"/-->
+
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
         android:orientation="horizontal"
-        android:id="@+id/linearLayout5">
+        android:id="@+id/linearLayout5"
+        android:layout_below="@+id/cabezera"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.50"
-            android:orientation="vertical">
-            
+            android:orientation="vertical"
+            android:id="@+id/descLayout">
+
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="76dp"
+                android:layout_height="47dp"
                 android:gravity="center"
                 android:text="@string/description"
-                android:textSize="24dp"/>
+                android:textSize="18dp"/>
 
             <ImageView
+                android:id="@+id/descSelected"
                 android:layout_width="match_parent"
-                android:layout_height="4dp"
+                android:layout_height="3dp"
                 android:background="@color/tab_selected"/>
 
 
         </LinearLayout>
 
+        <ImageView
+            android:layout_width="3dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/background_shadow_vertical"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.50"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:id="@+id/menuLayout">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="76dp"
+                android:layout_height="47dp"
                 android:gravity="center"
                 android:text="@string/menu"
-                android:textSize="24dp"/>
+                android:textSize="18dp"/>
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="4dp"/>
+                android:layout_height="2dp"
+                android:id="@+id/menuSelected"/>
 
         </LinearLayout>
 
     </LinearLayout>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@drawable/background_shadow"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/linearLayout5"/>
+    
+    
     <android.support.v4.view.ViewPager
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/viewPager"

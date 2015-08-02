@@ -9,15 +9,26 @@ public class ProductModel {
     private String nomSite="";
     private String imgProduct="";
     private String nomProduct="";
-    private String tmpDelivery="";
     private String valProduct="";
+    private String description="";
+    private Boolean check=false;
 
-    public ProductModel(String nomSite, String imgProduct, String nomProduct, String tmpDelivery, String valProduct){
+    public ProductModel(String nomSite, String description, String imgProduct, String nomProduct, String valProduct, Boolean check){
         this.nomSite = nomSite;
         this.imgProduct = imgProduct;
         this.nomProduct = nomProduct;
-        this.tmpDelivery = tmpDelivery;
         this.valProduct = valProduct;
+        this.check = check;
+        this.description = description;
+
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setNomSite(String nomSite){
@@ -44,20 +55,20 @@ public class ProductModel {
         return this.nomProduct;
     }
 
-    public void setTmpDelivery(String tmpDelivery){
-        this.tmpDelivery = tmpDelivery;
-    }
-
-    public String getTmpDelivery(){
-        return this.tmpDelivery;
-    }
-
     public void setValProduct(String valProduct){
         this.valProduct = valProduct;
     }
 
     public String getValProduct(){
         return this.valProduct;
+    }
+
+    public Boolean getCheck() {
+        return check;
+    }
+
+    public void setCheck(Boolean check) {
+        this.check = check;
     }
 
 }
