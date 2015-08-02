@@ -56,6 +56,9 @@ public class ProfileAcrivity extends ActionBarActivity {
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
 
+        SiteProfile siteProfile = new SiteProfile(this);
+        siteProfile.execute("prueba1");
+
         final LinearLayout descLayout = (LinearLayout) findViewById(R.id.descLayout);
         LinearLayout menuLayout = (LinearLayout) findViewById(R.id.menuLayout);
         final ImageView descSelected = (ImageView) findViewById(R.id.descSelected);
@@ -165,19 +168,19 @@ public class ProfileAcrivity extends ActionBarActivity {
         protected void onPostExecute(String result){
 
             Log.d("AQUI", result);
-            arrayList.removeAll(arrayList);
-            productList.setAdapter(null);
+            //arrayList.removeAll(arrayList);
+            //productList.setAdapter(null);
 
 
             try {
                 JSONObject obj = new JSONObject(result);
 
-                JSONArray respJSON = (JSONArray) (obj.get("dishes"));
+                //JSONArray respJSON = (JSONArray) (obj.get("dishes"));
 
-                Log.d("success",obj.getString("dishes"));
-                if((obj.getInt("totalItems")>0)&&progressDialog.isShowing()){
+                //Log.d("success",obj.getString("dishes"));
+                //if((obj.getInt("totalItems")>0)&&progressDialog.isShowing()){
 
-                    nProducto = new String[respJSON.length()];
+                    /*nProducto = new String[respJSON.length()];
                     nSitio = new String[respJSON.length()];
                     idProducto = new int[respJSON.length()];
                     precioProducto = new Double[respJSON.length()];
@@ -213,18 +216,18 @@ public class ProfileAcrivity extends ActionBarActivity {
 
                         }
 
-                    }
+                    }*/
 
                     progressDialog.dismiss();
 
 
-                }
+                //}
 
                 // Create custom adapter for listview
-                adapter=new LazyImageLoadAdapter(activity, arrayList);
+                //adapter=new LazyImageLoadAdapter(activity, arrayList);
 
                 //Set adapter to listview
-                productList.setAdapter(adapter);
+                //productList.setAdapter(adapter);
 
 
 
