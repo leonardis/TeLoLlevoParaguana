@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.slice_group.telollevoparaguana.Fragments.DescFragment;
 import com.slice_group.telollevoparaguana.Fragments.MenuFragment;
+import com.slice_group.telollevoparaguana.ListProductLazy.ImageLoader;
 import com.slice_group.telollevoparaguana.ListProductLazy.LazyImageLoadAdapter;
 
 import org.apache.http.HttpResponse;
@@ -37,11 +38,37 @@ import org.json.JSONObject;
 public class ProfileAcrivity extends ActionBarActivity {
 
     private static View mCustomView;
+    String sitePermalink;
+    Activity activity;
+
+    private static TextView nameSite, descSite;
+    private static ImageView imgSite;
+    private ImageLoader imageLoader;
+
+    String address, categories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        activity = this;
+        imageLoader = new ImageLoader(activity.getApplicationContext());
+
+        nameSite = (TextView) findViewById(R.id.siteName);
+        nameSite.setShadowLayer(10,3,3, Color.RED);
+        descSite = (TextView) findViewById(R.id.desc);
+        imgSite = (ImageView) findViewById(R.id.imgSiteProfile);
+
+        address = "";
+        categories = "";
+
+        Bundle extras = getIntent().getExtras();
+        if(extras !=null) {
+            sitePermalink = extras.getString("PERMALINK");
+            SiteProfile siteProfile = new SiteProfile(this);
+            siteProfile.execute(sitePermalink);
+        }
 
         ActionBar mActionBar = this.getSupportActionBar();
         mActionBar.setDisplayShowHomeEnabled(false);
@@ -50,14 +77,8 @@ public class ProfileAcrivity extends ActionBarActivity {
 
         mCustomView = mInflater.inflate(R.layout.action_bar_custom_simple, null);
 
-        TextView siteName = (TextView) findViewById(R.id.siteName);
-        siteName.setShadowLayer(10,3,3, Color.RED);
-
         mActionBar.setCustomView(mCustomView);
         mActionBar.setDisplayShowCustomEnabled(true);
-
-        SiteProfile siteProfile = new SiteProfile(this);
-        siteProfile.execute("prueba1");
 
         final LinearLayout descLayout = (LinearLayout) findViewById(R.id.descLayout);
         LinearLayout menuLayout = (LinearLayout) findViewById(R.id.menuLayout);
@@ -97,11 +118,11 @@ public class ProfileAcrivity extends ActionBarActivity {
         public Fragment getItem(int pos) {
             switch(pos) {
 
-                case 0: return DescFragment.newInstance("FirstFragment, Instance 1");
+                case 0: return DescFragment.newInstance(sitePermalink, address);
                 case 1: return MenuFragment.newInstance("SecondFragment, Instance 2");
 
 
-                default: return DescFragment.newInstance("ThirdFragment, Default");
+                default: return DescFragment.newInstance("ThirdFragment, Default", address);
             }
         }
 
@@ -127,7 +148,7 @@ public class ProfileAcrivity extends ActionBarActivity {
             super.onPreExecute();
             progressDialog.setMessage("Buscando...");
             progressDialog.setIndeterminate(true);
-            progressDialog.setIndeterminateDrawable(getResources().getDrawable(R.drawable.circle_progress));
+            progressDialog.setIndeterminateDrawable(activity.getResources().getDrawable(R.drawable.circle_progress));
             progressDialog.setCancelable(false);
             progressDialog.show();
         }
@@ -175,6 +196,21 @@ public class ProfileAcrivity extends ActionBarActivity {
             try {
                 JSONObject obj = new JSONObject(result);
 
+                JSONObject obj2 = obj.getJSONObject("establishment");
+                if (progressDialog.isShowing()){
+
+                    nameSite.setText(obj2.getString("name"));
+                    descSite.setText(obj2.getString("description"));
+                    imgSite.setImageResource(R.drawable.ic_address);
+                    address = obj2.getString("address");
+                    //address = obj2.getString("address")+obj2.getString("city")+obj2.getString("state")+obj2.getString("country");
+
+                    final ImageView image = imgSite;
+                    imageLoader.DisplayImage(activity, "http://qcomerenparaguana.com"+obj2.getString("brand"), image);
+
+                    progressDialog.dismiss();
+                }
+
                 //JSONArray respJSON = (JSONArray) (obj.get("dishes"));
 
                 //Log.d("success",obj.getString("dishes"));
@@ -218,7 +254,7 @@ public class ProfileAcrivity extends ActionBarActivity {
 
                     }*/
 
-                    progressDialog.dismiss();
+
 
 
                 //}
@@ -237,11 +273,12 @@ public class ProfileAcrivity extends ActionBarActivity {
                 Toast.makeText(activity.getApplicationContext(), "Se produjo un error al realizar la Busqueda.", Toast.LENGTH_LONG).show();
                 Intent main = new Intent(activity.getApplicationContext(), BeginActivity.class);
                 startActivity(main);
-                finish();
+                activity.finish();
             }
 
 
         }
     }
+
 
 }

@@ -68,6 +68,8 @@ public class MainActivity extends ActionBarActivity  {
     private static ImageButton goToCar, clearButton, searchButton, overflowButton, backButton;
     private static EditText searchEdit;
 
+    private String sitePermalink;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -214,8 +216,8 @@ public class MainActivity extends ActionBarActivity  {
     }
 
     public void onRestClick(){
-        Toast.makeText(activity.getApplicationContext(), "RESTAURANT", Toast.LENGTH_LONG).show();
         Intent profile = new Intent(activity, ProfileAcrivity.class);
+        profile.putExtra("PERMALINK", sitePermalink);
         startActivity(profile);
     }
 
@@ -391,6 +393,7 @@ public class MainActivity extends ActionBarActivity  {
                         nSitio[i] = obj3.getString("name");
                         idProducto[i] = obj2.getInt("id");
                         precioProducto[i] = Double.parseDouble(obj2.getString("price"));
+                        sitePermalink = obj3.getString("permalink");
 
                         String nomSite = "";
                         if (obj3.getString("name").length()>=22) {
