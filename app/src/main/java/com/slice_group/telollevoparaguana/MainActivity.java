@@ -12,7 +12,9 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -38,6 +40,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 
@@ -45,12 +49,11 @@ import java.util.ArrayList;
  * Created by pancracio on 21/07/15.
  * e-Mail: leonardisrojas@gmail.com
  */
-public class MainActivity extends ActionBarActivity  {
+public class MainActivity extends AppCompatActivity {
     ListView productList;
     LazyImageLoadAdapter adapter;
     private static ArrayList<ProductModel> arrayList;
 
-    private static MainList mainList;
     private Activity activity;
 
     private static View mCustomView;
@@ -78,7 +81,7 @@ public class MainActivity extends ActionBarActivity  {
         activity = this;
 
 
-        mainList = new MainList(this);
+
 
         productList=(ListView)findViewById(R.id.listProduct);
         //productList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
@@ -88,21 +91,28 @@ public class MainActivity extends ActionBarActivity  {
         String query = "";
         Bundle extras = getIntent().getExtras();
         if(extras !=null) {
+            MainList mainList = new MainList(this);
+
             query = extras.getString("QUERY");
+            String[] splited = query.split("\\s+");
             mainList.execute(query);
 
         }
 
-        ActionBar mActionBar = this.getSupportActionBar();
-        mActionBar.setDisplayShowHomeEnabled(false);
-        mActionBar.setDisplayShowTitleEnabled(false);
-        LayoutInflater mInflater = LayoutInflater.from(this);
 
-        mCustomView = mInflater.inflate(R.layout.action_bar_custom, null);
-        counterText = (TextView) mCustomView.findViewById(R.id.counter);
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        /*mActionBar.setDisplayShowHomeEnabled(false);
+        mActionBar.setDisplayShowTitleEnabled(false);
+        LayoutInflater mInflater = LayoutInflater.from(this);*/
+
+        //mCustomView = mInflater.inflate(R.layout.action_bar_custom, null);
+        counterText = (TextView) mToolbar.findViewById(R.id.counter);
         counterText.setVisibility(View.INVISIBLE);
 
-        goToCar = (ImageButton) mCustomView.findViewById(R.id.car_button);
+        goToCar = (ImageButton) mToolbar.findViewById(R.id.car_button);
         goToCar.setVisibility(View.INVISIBLE);
 
         goToCar.setOnClickListener(new View.OnClickListener() {
@@ -127,15 +137,15 @@ public class MainActivity extends ActionBarActivity  {
             }
         });
 
-        clearButton = (ImageButton) mCustomView.findViewById(R.id.clearButton);
+        clearButton = (ImageButton) mToolbar.findViewById(R.id.clearButton);
         clearButton.setVisibility(View.INVISIBLE);
 
-        searchButton = (ImageButton) mCustomView.findViewById(R.id.search_button);
-        overflowButton = (ImageButton) mCustomView.findViewById(R.id.overButton);
+        searchButton = (ImageButton) mToolbar.findViewById(R.id.search_button);
+        overflowButton = (ImageButton) mToolbar.findViewById(R.id.overButton);
         //backButton = (ImageButton) mCustomView.findViewById(R.id.backButton);
         //backButton.setVisibility(View.INVISIBLE);
 
-        searchEdit = (EditText) mCustomView.findViewById(R.id.searchEdit);
+        searchEdit = (EditText) mToolbar.findViewById(R.id.searchEdit);
         searchEdit.setVisibility(View.INVISIBLE);
 
         searchButton.setOnClickListener(new View.OnClickListener() {
@@ -148,6 +158,12 @@ public class MainActivity extends ActionBarActivity  {
                     goToCar.setVisibility(View.INVISIBLE);
                     counterText.setVisibility(View.INVISIBLE);
                 }else{
+                    productList.setAdapter(null);
+                    arrayList.clear();
+                    MainList mainList = new MainList(activity);
+                    mainList.execute(searchEdit.getText().toString());
+                    searchEdit.setText("");
+                    Log.d("THE SEARCH", searchEdit.getText().toString());
                     overflowButton.setVisibility(View.VISIBLE);
                     searchEdit.setVisibility(View.INVISIBLE);
                     clearButton.setVisibility(View.INVISIBLE);
@@ -203,8 +219,8 @@ public class MainActivity extends ActionBarActivity  {
             }
         });*/
 
-        mActionBar.setCustomView(mCustomView);
-        mActionBar.setDisplayShowCustomEnabled(true);
+        //mActionBar.setCustomView(mCustomView);
+        //pizzmActionBar.setDisplayShowCustomEnabled(true);
 
     }
 
@@ -328,10 +344,19 @@ public class MainActivity extends ActionBarActivity  {
 
             HttpClient httpClient = new DefaultHttpClient();
 
-            String query = params[0].toString();
+            //String query = ;
+
+            //String query = URLEncoder.encode("apples oranges", "utf-8");
+
+            String cadena = null;
+            try {
+                cadena = "http://qcomerenparaguana.com/api/search?query=" + URLEncoder.encode(params[0].toString(), "utf-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
 
             HttpGet request =
-                    new HttpGet("http://qcomerenparaguana.com/api/search?query=" + query);
+                    new HttpGet(cadena.trim());
 
             request.setHeader("content-type", "application/json");
 

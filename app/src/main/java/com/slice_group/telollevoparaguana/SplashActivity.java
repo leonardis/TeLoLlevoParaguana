@@ -57,7 +57,7 @@ public class SplashActivity extends Activity {
                     boolean tokenize = false;
                     tokenize = LoadPreferences();
                     if (tokenize){
-                        Intent begin = new Intent(myContext, BeginActivity.class);
+                        Intent begin = new Intent(myContext, MainActivity.class);
                         startActivity(begin);
                     }else{
                         Intent i = new Intent(myContext, LoginActivity.class);

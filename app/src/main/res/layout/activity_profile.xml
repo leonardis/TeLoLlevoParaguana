@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" 
-    tools:context="com.slice_group.telollevoparaguana.ProfileAcrivity">
+    tools:context="com.slice_group.telollevoparaguana.ProfileAcrivity"
+    android:background="@color/white_main">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -138,7 +139,7 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
+                android:layout_height="3dp"
                 android:id="@+id/menuSelected"/>
 
         </LinearLayout>
@@ -146,6 +147,7 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/shadowProfile"
         android:layout_width="match_parent"
         android:layout_height="4dp"
         android:background="@drawable/background_shadow"
@@ -159,6 +161,6 @@
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/linearLayout5" />
+        android:layout_below="@+id/shadowProfile" />
 
 </RelativeLayout>

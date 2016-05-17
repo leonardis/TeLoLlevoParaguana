@@ -28,12 +28,14 @@ public class ProductAdapter extends BaseAdapter implements OnClickListener{
     private static LayoutInflater inflater = null;
     public Resources resources;
     ProductModel listValues = null;
+    String idAct;
     int i=0;
 
-    public ProductAdapter(Activity a, ArrayList d, Resources res) {
+    public ProductAdapter(Activity a, ArrayList d, Resources res, String idAct2) {
         activity = a;
         datos = d;
         resources = res;
+        idAct = idAct2;
 
         inflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -71,7 +73,10 @@ public class ProductAdapter extends BaseAdapter implements OnClickListener{
 
         if(convertView==null){
 
-            vi = inflater.inflate(R.layout.item_detail_history, null);
+            if (!idAct.equals("MENU"))
+                vi = inflater.inflate(R.layout.item_detail_history, null);
+            else
+                vi = inflater.inflate(R.layout.item_menu, null);
 
             holder = new ViewHolder();
             holder.siteName = (TextView) vi.findViewById(R.id.n_item);

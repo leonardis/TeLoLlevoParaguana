@@ -17,7 +17,7 @@ import com.slice_group.telollevoparaguana.R;
  */
 public class DescFragment extends Fragment {
 
-    private static TextView addressTV;
+    public static TextView addressTV, cityTV, catTV, creditTV, debitTV, cashTV;
     private static String myAddress;
 
     @Override
@@ -25,8 +25,12 @@ public class DescFragment extends Fragment {
         View v = inflater.inflate(R.layout.site_desc, container, false);
 
         addressTV = (TextView) v.findViewById(R.id.address);
+        cityTV = (TextView) v.findViewById(R.id.city);
+        catTV = (TextView) v.findViewById(R.id.categories);
+        creditTV = (TextView) v.findViewById(R.id.credit);
+        debitTV = (TextView) v.findViewById(R.id.debit);
+        cashTV = (TextView) v.findViewById(R.id.cash);
 
-        addressTV.setText(myAddress);
 
         return v;
     }

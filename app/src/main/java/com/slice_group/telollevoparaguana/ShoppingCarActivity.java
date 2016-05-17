@@ -20,6 +20,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ShoppingCarActivity extends ActionBarActivity {
@@ -39,6 +40,14 @@ public class ShoppingCarActivity extends ActionBarActivity {
     Dialog dialog, dialog2;
 
     int contador = 1;
+
+    protected List<String> mSupportedPaymentTypes = new ArrayList<String>(){{
+        add("credit_card");
+        add("debit_card");
+        add("prepaid_card");
+    }};
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +81,7 @@ public class ShoppingCarActivity extends ActionBarActivity {
         dialog.setTitle("Recuperación de contraseña");
 
         final Spinner spinner = (Spinner) dialog.findViewById(R.id.spinnerPay);
-        final LinearLayout btnDismiss = (LinearLayout) dialog.findViewById(R.id.aceptar);
+        final LinearLayout btnAccept = (LinearLayout) dialog.findViewById(R.id.aceptar);
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<String>(activity,
                         android.R.layout.simple_spinner_item, Payments);
@@ -132,7 +141,7 @@ public class ShoppingCarActivity extends ActionBarActivity {
                 Log.d("Nombres", nombres.get(i));
                 arrayList.add(new ProductModel(nombres.get(i),"","Sitio","",activity.getResources().getString(R.string.bs)+" 300",true));
             }
-            productAdapter = new ProductAdapter(this, arrayList, this.getResources());
+            productAdapter = new ProductAdapter(this, arrayList, this.getResources(), "SHOP");
             listView.setAdapter(productAdapter);
         }
 
@@ -145,7 +154,9 @@ public class ShoppingCarActivity extends ActionBarActivity {
             }
         });
 
-        btnDismiss.setOnClickListener(new Button.OnClickListener(){
+
+
+        btnAccept.setOnClickListener(new Button.OnClickListener(){
 
             @Override
             public void onClick(View v) {

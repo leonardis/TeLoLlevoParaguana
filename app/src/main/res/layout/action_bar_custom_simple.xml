@@ -41,7 +41,32 @@
         android:background="@android:color/transparent"
         android:src="@drawable/ic_clear_white_24dp"/>
 
+    <EditText
+        android:id="@+id/searchEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView3"
+        android:layout_toLeftOf="@+id/overButton"
+        android:layout_toRightOf="@+id/imageView3"
+        android:layout_toEndOf="@+id/imageView3"
+        android:layout_marginBottom="2dp"
+        android:hint="Buscar"
+        android:textColorHint="@color/btn_disabled"
+        android:textColor="@color/white_main"
+        android:paddingLeft="5dp"
+        android:gravity="center_vertical"
+        android:layout_alignTop="@+id/overButton"
+        android:imeOptions="actionSearch"/>
 
+    <ImageButton
+        android:id="@+id/search_button"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_search_white"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/overButton"
+        android:layout_marginRight="5dp"/>
 
     <ImageButton
         android:id="@+id/car_button"
@@ -69,31 +94,18 @@
         android:layout_marginTop="5dp"
         android:background="@drawable/rounded_square"/>
 
-    <EditText
-        android:id="@+id/searchEdit"
+    <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageView3"
         android:layout_toLeftOf="@+id/overButton"
         android:layout_toRightOf="@+id/imageView3"
         android:layout_toEndOf="@+id/imageView3"
-        android:layout_marginBottom="2dp"
-        android:hint="Buscar"
-        android:textColorHint="@color/btn_disabled"
         android:textColor="@color/white_main"
         android:paddingLeft="5dp"
         android:gravity="center_vertical"
         android:layout_alignTop="@+id/overButton"
-        android:imeOptions="actionSearch"/>
-
-    <ImageButton
-        android:id="@+id/search_button"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_search_white"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/overButton"
-        android:layout_marginRight="5dp"/>
+        android:textSize="16sp"/>
 
 </RelativeLayout>

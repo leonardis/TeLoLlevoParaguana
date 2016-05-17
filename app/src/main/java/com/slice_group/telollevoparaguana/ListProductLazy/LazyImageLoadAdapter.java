@@ -87,6 +87,7 @@ public class LazyImageLoadAdapter extends BaseAdapter implements OnClickListener
 
             holder = new ViewHolder();
             holder.plato = (TextView) vi.findViewById(R.id.productName);
+            holder.plato.setShadowLayer(20, 0, 0, Color.BLACK);
             holder.rest = (TextView)vi.findViewById(R.id.siteName);
             holder.descripcion = (TextView)vi.findViewById(R.id.desc);
             holder.precio = (TextView)vi.findViewById(R.id.productPrice);

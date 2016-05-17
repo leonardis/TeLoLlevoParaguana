@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- PALETA PRINCIPAL DE COLORES -->
+    <color name="colorPrimary">#D21834</color>
+    <color name="colorPrimaryDark">#FF9B1421</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="navigationBarColor">#000000</color>
+    <color name="colorAccent">#FF80AB</color>
+
     <!-- TRANSPARENTE -->
     <color name="transparent">#00000000</color>
+
+    <color name="links">#ab47bc</color>
 
     <!-- SPLASH -->
     <color name="background_splash">#f1ce00</color>

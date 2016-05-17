@@ -12,6 +12,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +43,7 @@ public class ProfileAcrivity extends ActionBarActivity {
     Activity activity;
 
     private static TextView nameSite, descSite;
-    private static ImageView imgSite;
+    private static ImageView imgSite, bannerSite;
     private ImageLoader imageLoader;
 
     String address, categories;
@@ -59,6 +60,7 @@ public class ProfileAcrivity extends ActionBarActivity {
         nameSite.setShadowLayer(10,3,3, Color.RED);
         descSite = (TextView) findViewById(R.id.desc);
         imgSite = (ImageView) findViewById(R.id.imgSiteProfile);
+        bannerSite = (ImageView) findViewById(R.id.banner);
 
         address = "";
         categories = "";
@@ -119,7 +121,7 @@ public class ProfileAcrivity extends ActionBarActivity {
             switch(pos) {
 
                 case 0: return DescFragment.newInstance(sitePermalink, address);
-                case 1: return MenuFragment.newInstance("SecondFragment, Instance 2");
+                case 1: return MenuFragment.newInstance(sitePermalink, activity);
 
 
                 default: return DescFragment.newInstance("ThirdFragment, Default", address);
@@ -201,12 +203,31 @@ public class ProfileAcrivity extends ActionBarActivity {
 
                     nameSite.setText(obj2.getString("name"));
                     descSite.setText(obj2.getString("description"));
-                    imgSite.setImageResource(R.drawable.ic_address);
+
+
+
+                    String myAdd = "<font color='#ab47bc'>"+obj2.getString("address")+"</font>";
+                    DescFragment.addressTV.setText(obj2.getString("address"));
+                    DescFragment.cityTV.setText(obj2.getString("city") + ", " + obj2.getString("state") + " - " +  obj2.getString("country"));
+                    DescFragment.catTV.setText(obj2.getString("categories"));
+
+                    if (!obj2.getString("credit_card").equals("Acepta tarjeta de credito"))
+                        DescFragment.creditTV.setVisibility(View.GONE);
+
+                    if (!obj2.getString("debit").equals("Acepta debito"))
+                        DescFragment.debitTV.setVisibility(View.GONE);
+
+                    if (!obj2.getString("cash").equals("Acepta efectivo"))
+                        DescFragment.cashTV.setVisibility(View.GONE);
+
                     address = obj2.getString("address");
                     //address = obj2.getString("address")+obj2.getString("city")+obj2.getString("state")+obj2.getString("country");
 
                     final ImageView image = imgSite;
                     imageLoader.DisplayImage(activity, "http://qcomerenparaguana.com"+obj2.getString("brand"), image);
+
+                    final ImageView image2 = bannerSite;
+                    imageLoader.DisplayImage(activity, "http://qcomerenparaguana.com"+obj2.getString("banner"), image2);
 
                     progressDialog.dismiss();
                 }

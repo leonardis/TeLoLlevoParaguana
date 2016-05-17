@@ -1,17 +1,42 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="MyMaterialTheme" parent="MyMaterialTheme.Base">
 
-        <item name="actionBarStyle">@style/MyActionBar</item>
+    </style>
+
+    <style name="MyMaterialTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+
+<!--resources>
+
+    <!- Base application theme. ->
+    <style name="MyMaterialTheme" parent="MyMaterialTheme.Base">
+
+
+        <!-item name="actionBarStyle">@style/MyActionBar</item->
+    </style>
+
+    <style name="MyMaterialTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="MyActionBar"
         parent="Widget.AppCompat.Toolbar">
 
-        <!-- Support library compatibility -->
+        <!- Support library compatibility ->
         <item name="contentInsetStart">0dp</item>
-        <!--<item name="background">@android:color/transparent</item>-->
+        <!-<item name="background">@android:color/transparent</item>->
     </style>
 
     <style name="Menu" parent="Base.V7.Theme.AppCompat.Dialog">
@@ -25,8 +50,8 @@
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
         <item name="android:backgroundDimEnabled">false</item>
         <item name="android:background">@android:color/transparent</item>
-        <!-- item name="android:windowAnimationStyle">@style/menu_animacion</item-->
-    </style>
+        <!- item name="android:windowAnimationStyle">@style/menu_animacion</item->
+    </style-->
 
     <style name="btn_login" parent="@android:style/Widget.Button">
         <item name="android:gravity">center_vertical|center_horizontal</item>
@@ -64,6 +89,16 @@
         <item name="android:textSize">12dip</item>
         <item name="android:textStyle">bold</item>
         <item name="android:background">@drawable/btn_yellow_square</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="btn_red_square" parent="@android:style/Widget.Button">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textColor">@color/white_main</item>
+        <item name="android:textSize">12dip</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/btn_red_square</item>
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
     </style>
