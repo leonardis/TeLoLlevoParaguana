@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/pancracio/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp-urlconnection/2.3.0/4f12ec1e1455909e1f0b8530c719c90b2d01745/okhttp-urlconnection-2.3.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="04f12ec1e1455909e1f0b8530c719c90b2d01745">
+        <dex dex="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-2.3.0-6f5109a439083658db305c016f11f1355257dce2.jar" />
+    </item>
+    <item
+        jar="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/exploded-aar/com.melnykov/floatingactionbutton/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="8c6ebb7d087d1a30bf84356bd2aecf85309fc024">
+        <dex dex="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/pre-dexed/debug/classes-2e11745a00e5dad4546759e61d4f044a000489e8.jar" />
+    </item>
+    <item
+        jar="/home/pancracio/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-8fcef27a0251d05ae726f201b81a2c98ab1eb133.jar" />
+    </item>
+    <item
+        jar="/home/pancracio/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/pre-dexed/debug/gson-2.3.1-ebde83d4564c8a8a3d1e73e238b3878cd6d9a61b.jar" />
+    </item>
+    <item
+        jar="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/jars/libs/internal_impl-22.1.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
+        <dex dex="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/pre-dexed/debug/internal_impl-22.1.1-692429593f23f9ea82f28b909a6cd90015c8432e.jar" />
+    </item>
+    <item
+        jar="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/exploded-aar/com.mercadopago/android-sdk/0.9.11/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e069cfb545381ea8c56d547afe73e5489c12260b">
+        <dex dex="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/pre-dexed/debug/classes-51b1d97bce373a00f984c92ab2082362b18a3da5.jar" />
+    </item>
+    <item
+        jar="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a3ff3c506644c820eb2bdf06e8339f72be578551">
+        <dex dex="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/pre-dexed/debug/classes-2a0eaabf4e57bbcddf365af1afb3059363810911.jar" />
+    </item>
+    <item
+        jar="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
+        <dex dex="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/pre-dexed/debug/classes-48f4078b7ab71a270f0f4b7ab74d313109c28b22.jar" />
+    </item>
+    <item
+        jar="/home/pancracio/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.3.0/1b355f73402020c5a0dcca58affc3ec3dfeabac1/okio-1.3.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1b355f73402020c5a0dcca58affc3ec3dfeabac1">
+        <dex dex="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/pre-dexed/debug/okio-1.3.0-05885a8db69b9db696da6e94cbfbf4cb456e9e75.jar" />
+    </item>
+    <item
+        jar="/home/pancracio/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp/okhttp/2.3.0/2e7bc7033dc2c8423e661224171b3133fb155b28/okhttp-2.3.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2e7bc7033dc2c8423e661224171b3133fb155b28">
+        <dex dex="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/pre-dexed/debug/okhttp-2.3.0-45645748eb135273d2e85cde4b2f0e7f195c1b4f.jar" />
+    </item>
+    <item
+        jar="/home/pancracio/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/pre-dexed/debug/library-2.4.0-77d365260f06d5c81180e415317ab88bfc860c32.jar" />
+    </item>
+    <item
+        jar="/home/pancracio/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/22.1.1/support-annotations-22.1.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
+        <dex dex="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/pre-dexed/debug/support-annotations-22.1.1-1c9fb642dc13f5192d4de98625dda1e0a4f5f914.jar" />
+    </item>
+    <item
+        jar="/home/pancracio/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/1.9.0/a681c044244d9fc375198588297a39ba78028423/retrofit-1.9.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a681c044244d9fc375198588297a39ba78028423">
+        <dex dex="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/pre-dexed/debug/retrofit-1.9.0-fe25fd02788004631c9d361336ff68ad1e87b14c.jar" />
+    </item>
+    <item
+        jar="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/22.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e0b0c35d02308b270015a74cada4887e2e49b889">
+        <dex dex="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/pre-dexed/debug/classes-4fd0e229008f296eff735018cf28f565c6ce6adc.jar" />
+    </item>
+    <item
+        jar="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.1.1/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="22886d910315028a2b34b1ba068c265534ade87a">
+        <dex dex="/home/pancracio/AndroidStudioProjects/TeLoLlevoParaguana/app/build/intermediates/pre-dexed/debug/classes-d22a972fe11723942fe8960cc4c65bf96aa7987c.jar" />
+    </item>
+
+</items>
